@@ -1,0 +1,10 @@
+const express = require('express')
+const DataController = require('../../controllers/DataController')
+const DataRouter = express.Router()
+DataRouter.post('/adminapi/data/add', DataController.add)
+DataRouter.post('/adminapi/data/addcloud', DataController.addCloud)
+DataRouter.get('/adminapi/data/list', DataController.getList)
+DataRouter.get('/adminapi/data/list/:id', DataController.getList)
+DataRouter.put('/adminapi/data/list/:id', DataController.putList)
+DataRouter.delete('/adminapi/data/list/:id', DataController.delList)
+module.exports = DataRouter
