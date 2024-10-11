@@ -2,6 +2,7 @@ const UserService = require('../services/UserService')
 const jwt = require('../util/jwt')
 const UserContoller = {
   login: async (req, res) => {
+    console.log(req.body)
     let result = await UserService.login(req.body)
     if (result) {
       //生成token

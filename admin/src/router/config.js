@@ -60,13 +60,18 @@ const routes = [
   },
   {
     path: '/',
-    redirect: '/index'
+    redirect: '/login'
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'Notfound',
     component: NotFound
-  }
+  },
+  {
+    path: '/screen',
+    component: () => import('../views/screen/screen.vue'),
+    name: 'screen',
+  },
 ]
 
 

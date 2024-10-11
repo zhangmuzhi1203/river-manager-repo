@@ -12,7 +12,7 @@
             <el-input type="password" placeholder="请输入密码" v-model="loginForm.password" show-password></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button :loading="loading" type="primary" class="btn_login" @click="login">登陆</el-button>
+            <el-button :loading="loading" color="#626aef" type="primary" class="btn_login" @click="login">登陆</el-button>
           </el-form-item>
         </el-form>
       </el-col>
@@ -32,7 +32,7 @@ const store = useStore()
 const router = useRouter()
 const loginForm = reactive({
   username: 'zmz',
-  password: '12345678'
+  password: '123456'
 })
 const loginFormRef = ref([]) //表单的引用对象
 //点击加载效果
@@ -55,7 +55,7 @@ const validatorPassword = (rule, value, callback) => {
   if (value.length >= 6) {
     callback()
   } else {
-    callback(new Error('密码长度至少八位'))
+    callback(new Error('密码长度至少六位'))
   }
 }
 const loginRules = reactive({
@@ -115,8 +115,9 @@ const login = () => {
     top: 35vh;
     width: 60%;
     padding: 20px;
-    background: url('@/assets/images/login_form.png') no-repeat;
-    background-size: cover;
+    // background: url('@/assets/images/login_form.png') no-repeat;
+    // background-size: cover;
+    backdrop-filter: blur(10px);
   }
 
   h1 {

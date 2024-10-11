@@ -8,23 +8,12 @@
     <el-card class="box-card">
       <el-row>
         <div class="wrapOne">
-          <el-button class="button my_btn" @click="getData()"
-            >Get Data</el-button
-          >
+          <el-button class="button my_btn" @click="getData()">Get Data</el-button>
         </div>
-        <!-- <div class="wrapTwo">
-          <el-button class="button my_btn" @click="saveData()"
-            >Save Data</el-button
-          >
-        </div> -->
       </el-row>
       <el-row :gutter="20" class="el-row">
         <el-col :span="6">
-          <el-image
-            style="width: 150px; height: 130px"
-            src="https://i.postimg.cc/L5cfYYgK/image.png"
-            :fit="fit"
-          />
+          <el-image style="width: 150px; height: 130px" src="https://i.postimg.cc/L5cfYYgK/image.png" :fit="fit" />
           <h3 class="my_h">
             {{
               store.state.cloudServerInfo[0]
@@ -34,12 +23,8 @@
           </h3>
         </el-col>
 
-        <el-col :span="6"
-          ><el-image
-            style="width: 150px; height: 130px"
-            src="https://i.postimg.cc/8kRdf5KN/image.png"
-            :fit="fit"
-          />
+        <el-col :span="6"><el-image style="width: 150px; height: 130px" src="https://i.postimg.cc/8kRdf5KN/image.png"
+            :fit="fit" />
           <h3 class="my_h">
             {{
               store.state.cloudServerInfo[1]
@@ -49,12 +34,8 @@
           </h3>
         </el-col>
 
-        <el-col :span="6"
-          ><el-image
-            style="width: 150px; height: 130px"
-            src="https://i.postimg.cc/TYx9tmLK/image.png"
-            :fit="fit"
-          />
+        <el-col :span="6"><el-image style="width: 150px; height: 130px" src="https://i.postimg.cc/TYx9tmLK/image.png"
+            :fit="fit" />
           <h3 class="my_h">
             {{
               store.state.cloudServerInfo[2]
@@ -63,12 +44,8 @@
             }}
           </h3>
         </el-col>
-        <el-col :span="6"
-          ><el-image
-            style="width: 150px; height: 130px"
-            src="https://i.postimg.cc/qRnsLMpc/pH.png"
-            :fit="fit"
-          />
+        <el-col :span="6"><el-image style="width: 150px; height: 130px" src="https://i.postimg.cc/qRnsLMpc/pH.png"
+            :fit="fit" />
           <h3 class="my_h">
             {{
               store.state.cloudServerInfo[3]
@@ -80,10 +57,12 @@
       </el-row>
     </el-card>
     <el-card class="box-card">
-      <template #header><h1>硬件设备</h1></template>
+      <template #header>
+        <h1>硬件设备</h1>
+      </template>
       <el-carousel :interval="4000" type="card" height="300px">
         <el-carousel-item v-for="item in imgArray" :key="item">
-          <img :src="item.imgUrl" style="width: 560px; height: 300px" />
+          <img :src="item.imgUrl" style="width: 580px; height: 300px" />
         </el-carousel-item>
       </el-carousel>
     </el-card>
@@ -127,9 +106,8 @@ const getData = () => {
       ph: store.state.cloudServerInfo[3],
     }
     console.log(dataCloud)
-    axios.post('/adminapi/data/addcloud', dataCloud).then(res => {
+    axios.post('http://127.0.0.1:3000/adminapi/data/addcloud', dataCloud).then(res => {
       console.log(res.data.data)
-      console.log(router.currentRoute.value.path)
       if (router.currentRoute.value.path === '/monitor') {
         setTimeout(() => {
           router.push('/data-manage/datalist')
@@ -160,16 +138,23 @@ const imgArray = [
 .box-card {
   margin-top: 30px;
 }
+
 .wrapOne {
   position: relative;
-  top: 0px; /* 向下移动元素 */
-  left: 0px; /* 向右移动元素 */
+  top: 0px;
+  /* 向下移动元素 */
+  left: 0px;
+  /* 向右移动元素 */
 }
+
 .wrapTwo {
   position: relative;
-  top: 0px; /* 向下移动元素 */
-  left: 0px; /* 向右移动元素 */
+  top: 0px;
+  /* 向下移动元素 */
+  left: 0px;
+  /* 向右移动元素 */
 }
+
 .button {
   width: 140px;
   height: 45px;
@@ -194,6 +179,7 @@ const imgArray = [
   color: #fff;
   transform: translateY(-7px);
 }
+
 .my_h {
   position: relative;
   top: 0px;
@@ -223,4 +209,3 @@ const imgArray = [
   background-color: #d3dce6;
 }
 </style>
-
